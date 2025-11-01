@@ -5,7 +5,7 @@ metadata:
 spec:
   description: This task will clean up workspace by delete all files
   workspaces:
-    name: source
+    - name: source
   steps:
     - name: remove
       image: alpine:3
@@ -39,12 +39,12 @@ metadata:
   name: nose
 spec:
   workspaces:
-    name: source
+    - name: source
   params:
     - name: args
-      description:  Argument to pass to nose
+      description:  argument to pass to nose
       type: string
-      default:  "-v"
+      default: "-v"
   steps:
     - name: nosetests
       image:  python:3.9-slim
@@ -55,6 +55,7 @@ spec:
           python -m pip install --upgrade pip wheel
           pip install -r requirements.txt
           nosetests $(params.args)
+
 
     
 
